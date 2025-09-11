@@ -22,3 +22,20 @@ variable "BQ_DATASET" {
   type        = string
   default     = "spotify"
 }
+
+variable "composer" {
+  description = "Name of Cloud Composer environment which orchestrates data pipelines"
+  type = string
+  default = "spotify-composer"
+}
+
+variable "composer_version" {
+  description = "Cloud Composer image version"
+  type = string
+  default = "composer-3-airflow-2"
+}
+
+variable "composer_sa" {
+  description = "Service account (email) for run elt, need for setup composer environment"
+  type = string
+}

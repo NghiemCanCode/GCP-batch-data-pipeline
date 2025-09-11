@@ -38,3 +38,19 @@ resource "google_bigquery_dataset" "dataset" {
   project    = var.project
   location   = var.region
 }
+
+resource "google_composer_environment" "orchestration" {
+  name = var.composer
+  region = var.region
+  config {
+    software_config {
+      image_version = var.composer_version
+    }
+    node_config {
+      service_account = var.composer_sa
+    }
+    resilience_mode = "STANDARD_RESILIENCE"
+
+    environment_size = "ENVIRONMENT_SIZE_SMALL"
+  }
+}
